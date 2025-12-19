@@ -10,11 +10,13 @@ body, html {
   flex-direction: column;
   align-items: center;
   font-family: 'Luckiest Guy', cursive;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 main{
 	display: none;
-  position: fixed;
 }
 
 h1 {

@@ -1,6 +1,6 @@
 "use strict";
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://octagames.ng';
 const urlParams = new URLSearchParams(window.location.search);
 const userid = urlParams.get("userid");
 const id = urlParams.get("id");
@@ -10,7 +10,19 @@ const key = urlParams.get("key");
 const WORD_DICTIONARY = [
   "PLAY","GAME","WORD","GRID","SCORE","FAST","TIME","DRAG","FIND","MATCH",
   "CLASH","LEVEL","BRAIN","LOGIC","SKILL","POWER","ROUND","CLICK","TAP",
-  "BONUS","SPEED","THINK","FOCUS","REACT","GOAL","COIN"
+  "BONUS","SPEED","THINK","FOCUS","REACT","GOAL","COIN",
+
+  "PUZZLE","PLAYER","TARGET","WINNER","LOSING","GUESS","SEARCH","SELECT",
+  "SOLVER","CHOOSE","ACTION","RANDOM","MEMORY","RESULT","REWARD","BATTLE",
+  "STRIKE","DEFEND","ATTACK","MASTER","LEADER","RIDDLE","VISION","TACTIC",
+  "REFLEX","HUNTER","MATRIX","PATTERN","MISSION","OBJECT","CONTROL","POINTS",
+
+  "COMBO","CHAIN","STREAK","ENERGY","CHANCE","BLAZE","SWIFT","SMART","SHARP",
+  "THRILL","VICTORY","FAILURE","BALANCE","CONNECT","COLLECT","ADVANCE",
+  "TRIGGER","CAPTURE","COMPETE","SUCCESS","MINDSET","ENDLESS","ACCURATE",
+
+  "PUZZLED","SOLVING","FOCUSED","THINKER","BRAINY","TACTICS","RESPOND",
+  "REACTOR","ENGAGE","ACHIEVE","DOMINATE","SURVIVE","UPGRADE","EXPERT"
 ];
 
 const difficulty = Math.random()<0.6?"MEDIUM":"HARD";
@@ -33,7 +45,7 @@ while (WORD_DICTIONARY.length < 200) {
 /* ================= GAME CLASS ================= */
 PreloadGame().then(initialize => { 
     if (!initialize.payload.status) {
-        window.location.href = `${API_BASE_URL}/not_found`;
+        window.location.href = `${API_BASE_URL}/404`;
         return;        
     }
 
@@ -235,8 +247,6 @@ class OctaWordGame {
     UpdateGameData(this.userScore, 0, this.cpuScore, 0).then(initialize => { 
         if (!initialize.payload.status) {
             alert(initialize.payload.message);
-        } else{
-            console.log("success");                  
         }
     });
 
@@ -298,7 +308,6 @@ class OctaWordGame {
                 alert(initialize.payload.message);
             } else{
                 sessionStorage.removeItem("octaWordGame");
-                console.log("gameOver");
             }
         });
 

@@ -1,167 +1,295 @@
-* {
-
-	text-align: center;
-	font-family:  "Moon", Arial, sans serif;
-	font-weight: normal;
-
+/* Base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  /* background: #6f00fc; */
+  background: radial-gradient(circle at top, #1a2140, #0b0f1a);
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  /* background-image: url('../assets/bg.jpg'); */
 }
 
-h1, h2, #wordTheme, #solveButton, #newGameButton, .listWord {
-
-	padding: 5px;
-
+main{
+	display: none;
 }
 
-h1, h2, #wordTheme, #solveButton, #newGameButton {
-
-	border: 2px black solid;
-	border-radius: 8px;
-
-} 
-
-h1, h2, .cell, #wordTheme, #wordlist {
-
-	background-color: white;
-
+h1 {
+  font-size: 2em;
+  margin: 10px 0;
+  text-align: center;
 }
 
-h1, h2 {
-
-	margin: 10px auto 10px auto;
-	display: table;
-
+/* HOME SCREEN */
+.homeScreen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #1a2140, #0b0f1a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
 
-body {
-
-	background-color: #EAF7FB;
-
+.home-content {
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
 }
 
-#wordTheme {
-
-	border-radius: 8px;
-
+/* Logo */
+.logo {
+  font-size: 7vw;
+  font-weight: bold;
+  color: #00e5ff;
+  margin-bottom: 10px;
 }
 
+/* Game title */
+.game-title {
+  font-size: 10vw;
+  margin: 5px 0;
+  color: #eaf0ff;
+}
+
+.game-subtitle {
+  font-size: 4vw;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn {
+  padding: 14px;
+  font-size: 5vw;
+  font-family: 'Luckiest Guy', cursive;
+  border-radius: 14px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+/* Button themes */
+.btn.primary {
+  background: linear-gradient(135deg, #00e5ff, #3a7bff);
+  color: #001018;
+  box-shadow: 0 10px 25px rgba(0,229,255,0.35);
+}
+
+.btn.secondary {
+  background: #1e263d;
+  color: #eaf0ff;
+}
+
+.btn.danger {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+/* Button interactions */
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* Desktop scaling */
+@media (min-width: 600px) {
+  .logo { font-size: 2.5rem; }
+  .game-title { font-size: 3rem; }
+  .game-subtitle { font-size: 1rem; }
+  .btn { font-size: 1.1rem; }
+}
+
+.ui_panels{
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    font-size: 13px;
+    display: flex;
+}
+
+.ui_panels .octacoin, .ui_panels .value_balance{
+    position: relative;
+    background-color: #282A3A;
+    color: #fff;
+    width: 70px;
+    padding: 7px 3px 5px;
+    text-align: center;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.ui_panels .octacoin img, .ui_panels .value_balance img{
+    position: absolute;
+    top: 0px;
+    left: -5px;
+}
+
+.reward_panel{
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    width: 150px;
+    padding-left: 10px;
+    background-color: #282A3A;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.reward_panel img{
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+.reward_panel p{
+    width: fit-content;
+    font-size: 11px;
+    font-weight: 300;
+}
+
+.top-bar {
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    padding: 25px 15px;
+    font-size: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.top-bar span{
+	display: flex;
+	justify-content: center;
+}
+
+.top-bar img{
+	margin-bottom: 10px;
+}
+
+.timer-box{
+	display: flex;
+	align-content: center;
+	flex-wrap: wrap;
+	font-size: 20px;
+}
+
+.main-container{
+	display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container h4{
+	margin-top: 35px;
+	margin-bottom: 10px !important;
+	font-size: 23px;
+}
+
+/* Word board container */
 #wordboard {
-
-	margin: 20px auto 0 auto;
-	border: 2px black solid;
-	display: table;
-	min-width: 600px;
-
-}
-
-.boardRow {
-
-	display: table-row;
-
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  width: 80vw;
+  max-width: 800px;
+  height: 90vw;  /* Make square based on width */
+  max-height: 1000px;
+  margin: 0 auto;
+  background: #1F2833;
+  border-radius: 20px;
+  padding: 20px;
 }
 
 .cell {
-
-	margin: 0 auto;
-	border: none;
-	display: table-cell;
-	height:30px;
-	width: 30px;
-	font-size: 17px;
-	padding: 0;
-	outline: 0;
-
-	/*ensures text can't be accidentally selected*/
-	cursor: default; 
-	-moz-user-select: none;
-    -ms-user-select: none; 
-    -khtml-user-select: none; 
-    -webkit-user-select: none; 
-    -webkit-touch-callout: none; 
-
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
 }
 
-.cell:hover {
+.cell.selecting { background: #ffd500; color: #000; }
+.cell.user { background: #00ffd5; color: #000; }
+.cell.cpu { background: #ff4d4d; color: #fff; }
 
-	background-color: rgb(151, 141, 242);
-
-}
-
-.cell.selectable {
-
-	background-color: rgb(206, 206, 234);
-
-}
-
-.cell.selected { 
-
-	background-color: rgb(106, 90, 205);
-
-}
-
-.cell.found {
-
-	background-color: rgb(158, 123, 158);
-	border: 1px black solid;
+/* Word list below board */
+#wordlist {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	justify-content: center;
 	font-weight: bold;
-
+	width: 80vw;
+	padding: 0px 20px 20px;
+	border-radius: 20px;
 }
 
-#wordlist { 
-
-	margin: 40px auto 0 auto;
-	border: 2px black solid;
-	display: table;
-	min-width: 600px;
-	font-size: 17px;
-	text-align: center;
-	
+.wordItem {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #222a44;
+  color: #fff;
+  font-size: 17px;
+  text-align: center;
+  padding: 10px; 
+  border-radius: 20px;
 }
 
-.listRow {
+.wordItem.found-user { background: #00ffd5; color: #000; }
+.wordItem.found-cpu { background: #ff4d4d; color: #fff;}
 
-	display: table-row;
-
+/* Controls */
+.controls {
+  margin-top: 10px;
 }
 
-.listWord {
-
-	display: table-cell;
-	
+button {
+  font-size: 4vw;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #444;
+  color: #fff;
+  cursor: pointer;
 }
 
-.listWord.found {
+button:hover { background: #666; }
 
-	color: rgb(158, 123, 158);
-	text-decoration: line-through;
-	
+/* Responsive tweaks */
+@media(max-width: 400px){
+  .cell{ font-size: 18px; padding: 5px; }
+  .wordItem{ font-size: 12px; }
+  #wordlist{ width: 90vw; margin-bottom: 30px;}
+  .top-bar { font-size: 16px; }
+  #wordboard { padding: 10px; width: 75vw;}
+  .main-container h4 { font-size: 17px; }
 }
-
-#solveButton, #newGameButton {
-
-	background-color: rgb(199, 226, 201);
-	margin: 20px auto 20px auto;
-	display: block;
-	outline: 0;
-	border-radius: 8px;
-	font-size: 18px;
-	font-weight: bold;
-
-}
-
-@font-face {
-
-	font-family: "Moon";
-	src: url("../fonts/Moon-Regular.woff2") format("woff2"),
-		 url("../fonts/Moon-Regular.woff") format("woff");
-	font-weight: normal;
-
-}
-
-@font-face {
-
-	font-family: "Moon";
-	src: url("../fonts/Moon-Bold.woff2") format("woff2"),
-		 url("../fonts/Moon-Bold.woff") format("woff");
-	font-weight: bold;
-
+@media(min-width: 600px){
+  .cell { font-size: 40px; }
+  .wordItem { font-size: 35px; }
+  button { font-size: 1rem; padding: 8px 16px; }
 }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Octagames Word Clash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/wordsearch.css">
+   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Frijole&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<div class="homeScreen" id="homeScreen">
+  <div class="home-content">
+
+    <!-- <div class="logo">
+      🔥 Octagames
+    </div> -->
+
+    <h1 class="game-title">Word Clash</h1>
+    <p class="game-subtitle">Find words faster than your opponent</p>
+
+    <div class="menu-buttons">
+      <button class="btn primary" id="playBtn">Play ▶</button>
+      <button class="btn secondary" id="moreGamesBtn">More Games</button>
+      <button class="btn danger" id="exitBtn">Exit</button>
+    </div>
+
+  </div>
+</div>
+
+<main>
+	<div class="ui_panels">
+		<div class="octacoin">   
+		</div>
+		<div class="value_balance">
+		</div>
+	</div>
+	<div class="reward_panel">
+		<img src="./assets/dollars.png" width="20px" height="20px" alt="gift">
+		<p>Win to get <span class="reward_ui"></span>!</p>
+	</div>
+	<div class="main-container">
+	<div class="top-bar">
+		<div>
+			<span class="opp-img">
+			</span>
+			<div class="opponent">---</div>
+			<div id="cpuScore">0</div>
+		</div>
+		<div class="timer-box"><div id="timer">--</div>s</div>
+		<div>
+			<span class="player-img">
+			</span>
+			<div class="player">----</div> 
+			<div id="userScore">0</div>
+		</div>
+	</div>
+	<div id="wordboard"></div>
+	<h4>Find these words:</h4>
+	<div id="wordlist"></div>
+	</div>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="./js/game.js"></script>
+
+</body>
+</html>
